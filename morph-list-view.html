@@ -6,6 +6,14 @@
       :host {
         display: block;
       }
+
+      :host ::slotted(morph-list-view-item) {
+        margin-bottom: 0;
+      }
+
+      :host ::slotted(morph-list-view-item:not(:first-of-type)) {
+        --display-top-line: none;
+      }
     </style>
 
     <slot></slot>
