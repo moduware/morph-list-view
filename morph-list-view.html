@@ -14,6 +14,11 @@
       :host ::slotted(morph-list-view-item:not(:first-of-type)) {
         --display-top-line: none;
       }
+
+      :host ::slotted(morph-list-view-item:not(:last-of-type)) {
+        --display-bottom-line: none;
+        --display-inner-item-bottom-line: block;
+      }
     </style>
 
     <slot></slot>
