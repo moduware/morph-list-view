@@ -1,0 +1,33 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="morph-list-view">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <slot></slot>
+
+  </template>
+
+  <script>
+    /**
+     * `morph-list-view`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MorphListView extends Polymer.Element {
+      static get is() { return 'morph-list-view'; }
+      static get properties() {
+        return {};
+      }
+    }
+
+    window.customElements.define(MorphListView.is, MorphListView);
+  </script>
+</dom-module>
