@@ -10,12 +10,26 @@
     <script src="../../web-component-tester/browser.js"></script>
 
     <link rel="import" href="../morph-list-view.html">
+    <link rel="import" href="../../morph-list-view-item/morph-list-view-item.html">
+    
   </head>
   <body>
 
-    <test-fixture id="BasicTestFixture">
+    <test-fixture id="BasicIosFixture">
       <template>
-        <morph-list-view></morph-list-view>
+        <morph-list-view platform="ios">
+          <morph-list-view-item>Item 1</morph-list-view-item>
+        </morph-list-view>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="BasicFixtureAndroid">
+      <template>
+        <morph-list-view platform="android">
+          <morph-list-view-item>Item 1</morph-list-view-item>
+          <morph-list-view-item>Item 2</morph-list-view-item>
+          <morph-list-view-item>Item 3</morph-list-view-item>
+        </morph-list-view>
       </template>
     </test-fixture>
 
@@ -26,24 +40,36 @@
     </test-fixture>
 
     <script>
-      suite('morph-list-view', () => {
+      describe('morph-list-view', () => {
+        // declare variable to be used between beforeAll and all context or it block
+        let list, styles, items;
 
-        test('instantiating the element with default properties works', () => {
-          const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'morph-list-view');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello morph-list-view!');
+        beforeEach(function() {
+          list = fixture('BasicIosFixture');
+          styles = window.getComputedStyle(list);
         });
 
-        test('setting a property on the element works', () => {
-          // Create a test fixture
-          const element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+        it('initial styles reflecting correctly', () => {
+          expect(styles.display).to.equal('block');
+          expect(styles.marginBottom).to.equal('35px');
         });
+
+        // it('instantiating the element with default properties works', () => {
+        //   const list = fixture('BasicFixtureAndroid');
+        //   assert.equal(list.prop1, 'morph-list-view');
+        //   const elementShadowRoot = list.shadowRoot;
+        //   const elementHeader = elementShadowRoot.querySelector('h2');
+        //   assert.equal(elementHeader.innerHTML, 'Hello morph-list-view!');
+        // });
+
+        // it('setting a property on the element works', () => {
+        //   // Create a test fixture
+        //   const list = fixture('ChangedPropertyTestFixture');
+        //   assert.equal(element.prop1, 'new-prop1');
+        //   const elementShadowRoot = list.shadowRoot;
+        //   const elementHeader = elementShadowRoot.querySelector('h2');
+        //   assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+        // });
 
       });
     </script>
