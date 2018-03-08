@@ -11,7 +11,8 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "morph-list-view-item": "https://github.com/moduware/morph-list-view-item.git#master",
     "iron-icons": "PolymerElements/iron-icons#^2.1.0",
-    "morph-list-view-title": "https://github.com/moduware/morph-list-view-title.git#master"
+    "morph-list-view-title": "https://github.com/moduware/morph-list-view-title.git#master",
+    "morph-list-view-divider": "https://github.com/moduware/morph-list-view-divider.git"
   },
   "resolutions": {
     "polymer": "^2.0.0"
