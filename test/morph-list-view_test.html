@@ -19,6 +19,8 @@
       <template>
         <morph-list-view platform="ios">
           <morph-list-view-item>Item 1</morph-list-view-item>
+          <morph-list-view-item>Item 2</morph-list-view-item>
+          <morph-list-view-item>Item 3</morph-list-view-item>
         </morph-list-view>
       </template>
     </test-fixture>
@@ -41,18 +43,50 @@
 
     <script>
       describe('morph-list-view', () => {
-        // declare variable to be used between beforeAll and all context or it block
-        let list, styles, items;
 
-        beforeEach(function() {
-          list = fixture('BasicIosFixture');
-          styles = window.getComputedStyle(list);
+        context('iOS list view', () => {
+
+          // declare variable to be used between beforeAll and all context or it block
+          let list, styles, listViewItems;
+
+          beforeEach(function() {
+            list = fixture('BasicIosFixture');
+            styles = window.getComputedStyle(list);
+            listViewItems = list.querySelectorAll('morph-list-view-item');
+          });
+
+          it('initial styles reflecting correctly', () => {
+            expect(styles.display).to.equal('block');
+            expect(styles.marginBottom).to.equal('35px');
+          });
+
+          it('list items have correct length', () => {
+            expect(listViewItems.length).to.equal(3);
+          });
+
+          it('list first item ::before top line display property should be block', () => {
+            const container = listViewItems[0].shadowRoot.querySelector('div.container');
+            const lineBeforeStyle = window.getComputedStyle(container, '::before');
+
+            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('block')
+          });
+          it('list last item bottom line display property should be none', () => {
+            const container = listViewItems[0].shadowRoot.querySelector('div.container');
+            const lineBeforeStyle = window.getComputedStyle(container, '::after');
+
+            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('none')
+          });
+
+          it('list inner item bottom line display property should be block', () => {
+            const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
+            const lineBeforeStyle = window.getComputedStyle(container, '::after');
+
+            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('block')
+          });
         });
 
-        it('initial styles reflecting correctly', () => {
-          expect(styles.display).to.equal('block');
-          expect(styles.marginBottom).to.equal('35px');
-        });
+
+
 
         // it('instantiating the element with default properties works', () => {
         //   const list = fixture('BasicFixtureAndroid');
