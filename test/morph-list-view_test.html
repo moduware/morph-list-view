@@ -25,7 +25,7 @@
       </template>
     </test-fixture>
 
-    <test-fixture id="BasicFixtureAndroid">
+    <test-fixture id="BasicAndroidFixture">
       <template>
         <morph-list-view platform="android">
           <morph-list-view-item>Item 1</morph-list-view-item>
@@ -35,18 +35,12 @@
       </template>
     </test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <morph-list-view prop1="new-prop1"></morph-list-view>
-      </template>
-    </test-fixture>
-
     <script>
       describe('morph-list-view', () => {
 
         context('iOS list view', () => {
 
-          // declare variable to be used between beforeAll and all context or it block
+          // declare variable to be used between 'beforeAll' block and 'context' block or 'it' block
           let list, styles, listViewItems;
 
           beforeEach(function() {
@@ -65,24 +59,68 @@
           });
 
           it('list first item ::before top line display property should be block', () => {
+            const firstItem = listViewItems[0].shadowRoot.querySelector('div.container');
+            const lineBeforeStyle = window.getComputedStyle(firstItem, '::before');
+
+            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('block')
+          });
+
+          it('list 2nd item ::before top line display property should be none', () => {
+            const secondItem = listViewItems[1].shadowRoot.querySelector('div.container');
+            const lineBeforeStyle = window.getComputedStyle(secondItem, '::before');
+
+            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('none')
+          });
+
+          it('list last item bottom line display property should be none', () => {
+            const container = listViewItems[0].shadowRoot.querySelector('div.container');
+            const lineAfterStyle = window.getComputedStyle(container, '::after');
+
+            expect(lineAfterStyle.getPropertyValue('display')).to.equal('none');
+          });
+
+          it('list inner item bottom line display property should be block', () => {
+            const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
+            const innerLineABottomStyle = window.getComputedStyle(container, '::after');
+
+            expect(innerLineABottomStyle.getPropertyValue('display')).to.equal('block');
+          });
+
+          it('list item background color should be correct', () => {
+            const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
+            const lineBeforeStyle = window.getComputedStyle(container, '::after');
+
+            expect(lineBeforeStyle.getPropertyValue('background-color')).to.equal('rgb(200, 199, 204)');
+          });
+
+        });
+
+        context('Android list view', () => {
+          beforeEach(function () {
+            list = fixture('BasicAndroidFixture');
+            listViewItems = list.querySelectorAll('morph-list-view-item');
+          });
+
+          it('list first item ::before top line display property should be block', () => {
             const container = listViewItems[0].shadowRoot.querySelector('div.container');
             const lineBeforeStyle = window.getComputedStyle(container, '::before');
 
             expect(lineBeforeStyle.getPropertyValue('display')).to.equal('block')
           });
+
           it('list last item bottom line display property should be none', () => {
             const container = listViewItems[0].shadowRoot.querySelector('div.container');
-            const lineBeforeStyle = window.getComputedStyle(container, '::after');
+            const lineAfterStyle = window.getComputedStyle(container, '::after');
 
-            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('none')
+            expect(lineAfterStyle.getPropertyValue('display')).to.equal('none');
           });
 
-          it('list inner item bottom line display property should be block', () => {
-            const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
-            const lineBeforeStyle = window.getComputedStyle(container, '::after');
+          it('list last item bottom margin property should be 0px', () => {
+            const listViewItemStyle = window.getComputedStyle(listViewItems[0]);
 
-            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('block')
+            expect(listViewItemStyle.getPropertyValue('margin-bottom')).to.equal('0px');
           });
+          
         });
 
 
