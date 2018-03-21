@@ -47,7 +47,6 @@
 
         this._observer = new Polymer.FlattenedNodesObserver(this.$.slot, (info) => {
           this._processNewNodes(info.addedNodes);
-          this._processRemovedNodes(info.removedNodes);
         });
 
         // Flush function needs to be added in order to have changes delivered immediately
@@ -61,23 +60,13 @@
 
       _processNewNodes(nodes) {
         for (var i = 0; i < nodes.length; i++) {
-          
+          // get all the child nodes that are list items
           if (nodes[i].nodeName == "MORPH-LIST-VIEW-ITEM") {
             var viewItem = nodes[i];
-            // this.listViewItems.push(viewItem);
-            
             if (viewItem.hasAttribute('expandable')) {
               viewItem.addEventListener('click', (e) => this._listViewItemClickHandler(e));
             }
-            
           } 
-          
-        }
-      }
-
-      _processRemovedNodes(nodes) {
-        for (var i = 0; i < nodes.length; i++) {
-          console.log('nodes', nodes[i]);
         }
       }
 
