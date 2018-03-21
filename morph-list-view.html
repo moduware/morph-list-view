@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/utils/flattened-nodes-observer.html">
 
 <dom-module id="morph-list-view">
   <template>
@@ -22,7 +23,7 @@
       }
     </style>
 
-    <slot></slot>
+    <slot id="slot"></slot>
 
   </template>
 
@@ -38,8 +39,69 @@
     class MorphListView extends Polymer.Element {
       static get is() { return 'morph-list-view'; }
       static get properties() {
-        return {};
+        return {
+
+          /** Array of list view items */
+          listViewItems: {
+            type: Array,
+            value: () => { return []; }
+          }
+
+        };
+
       }
+      
+      connectedCallback() {
+        super.connectedCallback();
+
+        this._observer = new Polymer.FlattenedNodesObserver(this.$.slot, (info) => {
+          this._processNewNodes(info.addedNodes);
+          this._processRemovedNodes(info.removedNodes);
+        });
+
+        // Flush function needs to be added in order to have changes delivered immediately
+        this._observer.flush();
+      }
+
+      disconnectedCallback() {
+        super.disconnectedCallback();
+        this._observer.disconnect();
+      }
+
+      _processNewNodes(nodes) {
+        for (var i = 0; i < nodes.length; i++) {
+          
+          if (nodes[i].nodeName == "MORPH-LIST-VIEW-ITEM") {
+            var viewItem = nodes[i];
+            this.listViewItems.push(viewItem);
+            
+            if (viewItem.hasAttribute('expandable')) {
+              viewItem.addEventListener('click', (e) => this._listViewItemClickHandler(e));
+            }
+            
+          } 
+          
+        }
+      }
+
+      _processRemovedNodes(nodes) {
+        for (var i = 0; i < nodes.length; i++) {
+          console.log('nodes', nodes[i]);
+        }
+      }
+
+      /**
+      *  Goes through all non-target item and the expanded attribute if any. This closes open expandable item when a new one is clicked. 
+      */
+      _listViewItemClickHandler(e) {
+        for (var i = 0; i < this.listViewItems.length; i++) {
+          // remove expanded attribute from all other items except the one most recently clicked
+          if (this.listViewItems[i] != e.target) {
+            this.listViewItems[i].removeAttribute('expanded');
+          }
+        }
+      }
+
     }
 
     window.customElements.define(MorphListView.is, MorphListView);
