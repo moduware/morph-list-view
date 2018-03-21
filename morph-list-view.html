@@ -39,7 +39,12 @@
     class MorphListView extends Polymer.Element {
       static get is() { return 'morph-list-view'; }
       static get properties() {
-        return {};
+        return {
+          accordion: {
+            type: Boolean,
+            value: false
+          }
+        };
       }
       
       connectedCallback() {
@@ -59,6 +64,7 @@
       }
 
       _processNewNodes(nodes) {
+        if (this.accordion != true) return;
         for (var i = 0; i < nodes.length; i++) {
           // get all the child nodes that are list items
           if (nodes[i].nodeName == "MORPH-LIST-VIEW-ITEM") {
