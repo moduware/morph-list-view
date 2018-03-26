@@ -8,6 +8,7 @@
 
     <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
+    <script src="../bower_components/iron-test-helpers/mock-interactions.js"></script>
 
     <link rel="import" href="../morph-list-view.html">
     <link rel="import" href="../../morph-list-view-item/morph-list-view-item.html">
@@ -160,7 +161,8 @@
             expect(firstItem.hasAttribute('expanded')).to.equal(true);
             expect(secondItem.hasAttribute('expanded')).to.equal(false);
             // clicking the second item
-            secondListItemAnchorTag.click();
+            MockInteractions.tap(secondListItemAnchorTag);
+
             // the second item becomes expanded and the first item not expanded
             expect(firstItem.hasAttribute('expanded')).to.equal(false);
             expect(secondItem.hasAttribute('expanded')).to.equal(true);
