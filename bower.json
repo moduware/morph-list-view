@@ -12,7 +12,8 @@
     "morph-list-view-item": "https://github.com/moduware/morph-list-view-item.git#master",
     "iron-icons": "PolymerElements/iron-icons#^2.1.0",
     "morph-list-view-title": "https://github.com/moduware/morph-list-view-title.git#master",
-    "morph-list-view-divider": "https://github.com/moduware/morph-list-view-divider.git"
+    "morph-list-view-divider": "https://github.com/moduware/morph-list-view-divider.git",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^2.0.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"
