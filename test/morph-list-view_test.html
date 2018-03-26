@@ -35,6 +35,16 @@
       </template>
     </test-fixture>
 
+    <test-fixture id="AccordionViewFixture">
+      <template>
+        <morph-list-view platform="ios" accordion>
+          <morph-list-view-item platform="ios" expandable expanded>Item 1</morph-list-view-item>
+          <morph-list-view-item platform="ios" expandable>Item 2</morph-list-view-item>
+          <morph-list-view-item platform="ios" expandable>Item 3</morph-list-view-item>
+        </morph-list-view>
+      </template>
+    </test-fixture>
+
     <script>
       describe('morph-list-view', () => {
 
@@ -121,6 +131,42 @@
             expect(listViewItemStyle.getPropertyValue('margin-bottom')).to.equal('0px');
           });
           
+        });
+
+        context('Expandable items test', () => {
+          // test for accordion
+          let list, listViewItems;
+          
+          beforeEach(function () {
+            list = fixture('AccordionViewFixture');
+            listViewItems = list.querySelectorAll('morph-list-view-item');
+            
+          });
+
+          it('should have accordion attribute', () => {
+            // console.log('list', list);
+            expect(list.hasAttribute('accordion')).to.equal(true);
+          });
+
+          // clicking on the item toggles the expanded
+          it('clicking on the item toggles the expanded items', () => {
+            const firstItem = listViewItems[0];
+            const secondItem = listViewItems[1];
+            const firstListViewItemShadowRoot = firstItem.shadowRoot;
+            const secondListViewItemShadowRoot = secondItem.shadowRoot;
+            const firstListItemAnchorTag = firstListViewItemShadowRoot.querySelector('a');
+            const secondListItemAnchorTag = secondListViewItemShadowRoot.querySelector('a');
+            // checking markup for expanded attributes
+            expect(firstItem.hasAttribute('expanded')).to.equal(true);
+            expect(secondItem.hasAttribute('expanded')).to.equal(false);
+            // clicking the second item
+            secondListItemAnchorTag.click();
+            // the second item becomes expanded and the first item not expanded
+            expect(firstItem.hasAttribute('expanded')).to.equal(false);
+            expect(secondItem.hasAttribute('expanded')).to.equal(true);
+          });
+
+
         });
 
       });
