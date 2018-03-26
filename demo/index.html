@@ -49,10 +49,10 @@
             </morph-list-view-item>
           </morph-list-view>
 
+          <!-- This are expandable items inside this list view. -->
           <morph-list-view>
             <morph-list-view-title>Second list</morph-list-view-title>
 
-            <!-- This is expandable items. this will be set to behave like accordion. when one opens the others closes. -->
             <morph-list-view-item expandable expanded>
               Expandable Item 1
               <span slot="expandable-content">
@@ -79,6 +79,37 @@
                 vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
               </span>
             </morph-list-view-item>
+
+            <!-- This are expandable inside list view with accordion attribute items. This will be set to behave like accordion. When one opens the others closes. -->
+            <morph-list-view accordion>
+              <morph-list-view-title>Second list Inside Accordion List View</morph-list-view-title>
+            
+              <morph-list-view-item expandable expanded>
+                Expandable Item 1 Inside Accordion
+                <span slot="expandable-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
+                  pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
+                  vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+                </span>
+              </morph-list-view-item>
+            
+              <morph-list-view-item expandable>
+                Expandable Item 2 Inside Accordion
+                <span slot="expandable-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
+                  pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
+                  vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+                </span>
+              </morph-list-view-item>
+            
+              <morph-list-view-item expandable>
+                Expandable Item 3 Inside Accordion
+                <span slot="expandable-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
+                  pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
+                  vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+                </span>
+              </morph-list-view-item>
 
           </morph-list-view>
         </template>
