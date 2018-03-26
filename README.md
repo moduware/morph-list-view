@@ -79,3 +79,18 @@ For the information about how to clone the desired repository, running the local
 |     Custom Attribute    |   Type  | Description                                                                                   | Default        |
 |:-----------------------:|:-------:|-----------------------------------------------------------------------------------------------|----------------|
 |      **`accordion`**    | Boolean | This is an option for items to expand one at a time on the same list view                     | **`false`**    |
+
+- Sample HTML markup for accordion list
+
+```html
+
+<template>
+  <morph-list-view accordion>
+    <morph-list-view-title>Accordion list</morph-list-view-title>
+    <morph-list-view-item expandable expanded>Item 1</morph-list-view-item>
+    <morph-list-view-item expandable>Item 2</morph-list-view-item>
+    <morph-list-view-item expandable>Item 3</morph-list-view-item>
+  </morph-list-view>
+</template>
+
+```
