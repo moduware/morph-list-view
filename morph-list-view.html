@@ -67,7 +67,7 @@
         if (this.accordion != true) return;
         for (var i = 0; i < nodes.length; i++) {
           // get all the child nodes that are list items
-          if (nodes[i].nodeName == "MORPH-LIST-VIEW-ITEM") {
+          if (nodes[i].nodeName == 'MORPH-LIST-VIEW-ITEM') {
             var viewItem = nodes[i];
             if (viewItem.hasAttribute('expandable')) {
               viewItem.addEventListener('click', (e) => this._listViewItemClickHandler(e));

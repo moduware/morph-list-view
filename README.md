@@ -80,6 +80,12 @@ For the information about how to clone the desired repository, running the local
 |:-----------------------:|:-------:|-----------------------------------------------------------------------------------------------|----------------|
 |      **`accordion`**    | Boolean | This is an option for items to expand one at a time on the same list view                     | **`false`**    |
 
+- Here is a quick demo of the morph-list-view element with accordion option
+
+  <p align="center">
+    <img src="demo-images/list-view-accordion.gif" alt="Android morph-list-view accordion option demo"/>
+  </p>
+
 - Sample HTML markup for accordion list
 
 ```html
