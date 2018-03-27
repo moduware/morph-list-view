@@ -21,6 +21,10 @@
         --display-bottom-line: none;
         --display-inner-item-bottom-line: block;
       }
+      
+      :host ::slotted(morph-list-view-item[expanded]:not(:last-of-type)) {
+        --sub-container-after-height: 0px;
+      }
     </style>
 
     <slot id="slot"></slot>
