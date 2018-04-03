@@ -22,8 +22,9 @@
         --display-inner-item-bottom-line: block;
       }
       
+      /* this is fading the inner line in and out using opacity */
       :host ::slotted(morph-list-view-item[expanded]:not(:last-of-type)) {
-        --sub-container-after-height: 0px;
+        --sub-container-after-opacity: 0;
       }
     </style>
 
