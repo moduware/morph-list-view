@@ -8,6 +8,61 @@ For the information about how to clone the desired repository, running the local
 
 ## Demo
 
+<!---
+
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../morph-list-view-item/morph-list-view-item.html">
+    <link rel="import" href="../morph-list-view-title/morph-list-view-title.html">
+    <link rel="import" href="../morph-list-view-divider/morph-list-view-divider.html">
+    <link rel="import" href="../iron-icons/maps-icons.html">
+    <link rel="import" href="morph-list-view.html">
+    <style>
+      html {
+        background-color: #eff0f4;
+      }
+    </style>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+
+```html
+<morph-list-view platform="android">
+  <morph-list-view-title platform="android">Android List</morph-list-view-title>
+  <morph-list-view-item platform="android">Item 1</morph-list-view-item>
+  <morph-list-view-item platform="android">
+    <!-- <span slot="icon"><iron-icon icon="maps:directions-bus"></iron-icon></span> -->
+    Item 1
+    <span slot="secondary-content">Android Version</span> 
+  </morph-list-view-item>
+  <morph-list-view-item platform="android" href="#moduware">
+    <span slot="header">Header</span>
+    Item 2
+    <span slot="footer">Footer</span>
+  </morph-list-view-item>
+</morph-list-view>
+
+<morph-list-view platform="ios">
+  <morph-list-view-title platform="ios">IOS List</morph-list-view-title>
+  <morph-list-view-item platform="ios">Item 1</morph-list-view-item>
+  <morph-list-view-item platform="ios">
+    <!-- <span slot="icon"><iron-icon icon="maps:directions-bus"></iron-icon></span> -->
+    Item 1
+    <span slot="secondary-content">IOS Version</span> 
+  </morph-list-view-item>
+  <morph-list-view-item platform="ios" href="#moduware">
+    <span slot="header">Header</span>
+    Item 2
+    <span slot="footer">Footer</span>
+  </morph-list-view-item>
+</morph-list-view>
+
+```
+
 - Here is a quick demo of the morph-list-view element for IOS.
 
   <p align="center">
