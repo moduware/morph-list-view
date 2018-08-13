@@ -39,14 +39,14 @@ For the information about how to clone the desired repository, running the local
 ```html
 
 <morph-list-view platform="android">
-  <morph-list-view-title platform="android">Android List</morph-list-view-title>
+  <morph-list-view-title platform="android">Android List Components</morph-list-view-title>
 
   <morph-list-view-item platform="android">
     Android List Item
     <span slot="secondary-content">Android Version</span>
   </morph-list-view-item>
 
-  <morph-list-view-divider platform="android"></morph-list-view-divider>
+  <morph-list-view-divider platform="android">Android Divider Element</morph-list-view-divider>
 
   <morph-list-view-item platform="android" href="#moduware">
     <span slot="header">Header</span>
@@ -63,18 +63,21 @@ For the information about how to clone the desired repository, running the local
   </morph-list-view-item>
 </morph-list-view>
 
-<!-- <morph-list-view platform="ios">
-  <morph-list-view-title platform="ios">IOS List</morph-list-view-title>
+<morph-list-view platform="ios">
+  <morph-list-view-title platform="ios">IOS List Components</morph-list-view-title>
 
   <morph-list-view-item platform="ios">
     List Item with secondary-content slot
     <span slot="secondary-content">IOS Version</span>
   </morph-list-view-item>
+
   <morph-list-view-item platform="ios" href="#moduware">
     <span slot="header">Header</span>
     List Item with both header and footer slot
     <span slot="footer">Footer</span>
   </morph-list-view-item>
+
+  <morph-list-view-divider platform="ios">IOS Divider Element</morph-list-view-divider>
 
   <morph-list-view-item platform="ios" href="#moduware" expandable>
     <span slot="icon"><iron-icon icon="maps:directions-bus"></iron-icon></span>
@@ -84,7 +87,7 @@ For the information about how to clone the desired repository, running the local
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus, vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
     </span>
   </morph-list-view-item>
-</morph-list-view> -->
+</morph-list-view>
 
 ```
 
