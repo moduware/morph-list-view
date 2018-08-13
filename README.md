@@ -15,6 +15,7 @@ For the information about how to clone the desired repository, running the local
 <!---
 
 ```
+
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
@@ -31,37 +32,58 @@ For the information about how to clone the desired repository, running the local
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
+
 ```
+
 -->
 
 ```html
+
 <morph-list-view platform="android">
   <morph-list-view-title platform="android">Android List</morph-list-view-title>
-  <morph-list-view-item platform="android">Item 1</morph-list-view-item>
+
   <morph-list-view-item platform="android">
-    <!-- <span slot="icon"><iron-icon icon="maps:directions-bus"></iron-icon></span> -->
-    Item 1
-    <span slot="secondary-content">Android Version</span> 
+    Android List Item
+    <span slot="secondary-content">Android Version</span>
   </morph-list-view-item>
+
+  <morph-list-view-divider platform="android"></morph-list-view-divider>
+
   <morph-list-view-item platform="android" href="#moduware">
     <span slot="header">Header</span>
-    Item 2
+    Android list item with href comes with ripple effect by default
     <span slot="footer">Footer</span>
+  </morph-list-view-item>
+
+  <morph-list-view-item platform="android" href="#moduware" expandable>
+    Expandable List Item with Link - Click to close or expand
+    <span slot="secondary-content">Android Version</span>
+    <span slot="expandable-content">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus, vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+    </span>
   </morph-list-view-item>
 </morph-list-view>
 
 <morph-list-view platform="ios">
   <morph-list-view-title platform="ios">IOS List</morph-list-view-title>
-  <morph-list-view-item platform="ios">Item 1</morph-list-view-item>
+
   <morph-list-view-item platform="ios">
-    <!-- <span slot="icon"><iron-icon icon="maps:directions-bus"></iron-icon></span> -->
-    Item 1
-    <span slot="secondary-content">IOS Version</span> 
+    List Item with secondary-content slot
+    <span slot="secondary-content">IOS Version</span>
   </morph-list-view-item>
   <morph-list-view-item platform="ios" href="#moduware">
     <span slot="header">Header</span>
-    Item 2
+    List Item with both header and footer slot
     <span slot="footer">Footer</span>
+  </morph-list-view-item>
+
+  <morph-list-view-item platform="ios" href="#moduware" expandable>
+    <span slot="icon"><iron-icon icon="maps:directions-bus"></iron-icon></span>
+    Expandable List Item - Click to close or expand
+    <span slot="secondary-content">IOS Version</span>
+    <span slot="expandable-content">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus, vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+    </span>
   </morph-list-view-item>
 </morph-list-view>
 
