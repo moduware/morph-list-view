@@ -15,7 +15,6 @@ For the information about how to clone the desired repository, running the local
 <!---
 
 ```
-
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
@@ -64,7 +63,7 @@ For the information about how to clone the desired repository, running the local
   </morph-list-view-item>
 </morph-list-view>
 
-<morph-list-view platform="ios">
+<!-- <morph-list-view platform="ios">
   <morph-list-view-title platform="ios">IOS List</morph-list-view-title>
 
   <morph-list-view-item platform="ios">
@@ -85,7 +84,7 @@ For the information about how to clone the desired repository, running the local
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus, vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
     </span>
   </morph-list-view-item>
-</morph-list-view>
+</morph-list-view> -->
 
 ```
 
