@@ -4,7 +4,7 @@
 
 List view container component
 
-`morph-list-view` is the containing parent element for other list view components like `morph-list-view-item`, `morph-list-view-title`, `morph-list-view-divider`. These list item components changes its appearance based on the wether the platform or device is IOS or Android.
+`morph-list-view` is the containing parent element for other list view components like `morph-list-view-item`, `morph-list-view-title`, `morph-list-view-divider`. These list item components changes its appearance based on the whether the platform or device is IOS or Android.
 
 ## Getting Started
 
