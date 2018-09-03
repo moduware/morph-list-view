@@ -9,26 +9,28 @@
         margin-bottom: 35px;
       }
 
-      :host ::slotted(morph-list-view-item) {
+      :host .container ::slotted(morph-list-view-item) {
         margin-bottom: 0;
       }
 
-      :host ::slotted(morph-list-view-item:not(:first-of-type)) {
+      :host .container ::slotted(morph-list-view-item:not(:first-of-type)) {
         --display-top-line: none;
       }
 
-      :host ::slotted(morph-list-view-item:not(:last-of-type)) {
+      :host .container ::slotted(morph-list-view-item:not(:last-of-type)) {
         --display-bottom-line: none;
         --display-inner-item-bottom-line: block;
       }
       
       /* this is fading the inner line in and out using opacity */
-      :host ::slotted(morph-list-view-item[expanded]:not(:last-of-type)) {
+      :host .container ::slotted(morph-list-view-item[expanded]:not(:last-of-type)) {
         --sub-container-after-opacity: 0;
       }
     </style>
 
-    <slot id="slot"></slot>
+    <div class="container">
+      <slot id="slot"></slot>
+    </div>
 
   </template>
 
