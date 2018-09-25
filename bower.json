@@ -3,17 +3,17 @@
   "main": "morph-list-view.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "morph-element": "https://github.com/moduware/morph-element.git#master"
+    "morph-element": "https://github.com/moduware/morph-element.git#polymer3"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
-    "morph-list-view-item": "https://github.com/moduware/morph-list-view-item.git#master",
     "iron-icons": "PolymerElements/iron-icons#^2.1.0",
-    "morph-list-view-title": "https://github.com/moduware/morph-list-view-title.git#master",
-    "morph-list-view-divider": "https://github.com/moduware/morph-list-view-divider.git#master",
-    "iron-test-helpers": "PolymerElements/iron-test-helpers#^2.0.0"
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^2.0.0",
+    "morph-list-view-item": "https://github.com/moduware/morph-list-view-item.git#polymer3",
+    "morph-list-view-title": "https://github.com/moduware/morph-list-view-title.git#polymer3",
+    "morph-list-view-divider": "https://github.com/moduware/morph-list-view-divider.git#polymer3"
   },
   "resolutions": {
     "polymer": "^2.0.0"
