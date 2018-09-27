@@ -6,27 +6,17 @@
 
     <title>morph-list-view test</title>
 
-    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
-    <script src="../bower_components/iron-test-helpers/mock-interactions.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script src="../node_modules/@polymer/iron-test-helpers/mock-interactions.js" type="module"></script>
 
-    <link rel="import" href="../morph-list-view.html">
-    <link rel="import" href="../../morph-list-view-item/morph-list-view-item.html">
+    <script type="module" src="../node_modules/@polymer/morph-list-view-item/morph-list-view-item.js"></script>
+    <script type="module" src="../morph-list-view.js"></script>
     
   </head>
   <body>
 
     <test-fixture id="BasicIosFixture">
-      <template>
-        <morph-list-view platform="ios">
-          <morph-list-view-item platform="ios">Item 1</morph-list-view-item>
-          <morph-list-view-item platform="ios">Item 2</morph-list-view-item>
-          <morph-list-view-item platform="ios">Item 3</morph-list-view-item>
-        </morph-list-view>
-      </template>
-    </test-fixture>
-
-    <test-fixture id="BasicAndroidFixture">
       <template>
         <morph-list-view platform="android">
           <morph-list-view-item platform="android">Item 1</morph-list-view-item>
@@ -36,142 +26,29 @@
       </template>
     </test-fixture>
 
-    <test-fixture id="AccordionViewFixture">
-      <template>
-        <morph-list-view platform="ios" accordion>
-          <morph-list-view-item platform="ios" expandable expanded>Item 1</morph-list-view-item>
-          <morph-list-view-item platform="ios" expandable>Item 2</morph-list-view-item>
-          <morph-list-view-item platform="ios" expandable>Item 3</morph-list-view-item>
-        </morph-list-view>
-      </template>
-    </test-fixture>
 
-    <script>
+    <script type="module">
+
       describe('morph-list-view', () => {
 
-        context('iOS list view', () => {
+        // declare variable to be used between 'beforeAll' block and 'context' block or 'it' block
+        let list, styles, ripple, rippleStyle;
 
-          // declare variable to be used between 'beforeAll' block and 'context' block or 'it' block
-          let list, styles, listViewItems;
-
-          beforeEach(function() {
-            list = fixture('BasicIosFixture');
-            styles = window.getComputedStyle(list);
-            listViewItems = list.querySelectorAll('morph-list-view-item');
-          });
-
-          it('initial styles reflecting correctly', () => {
-            expect(styles.display).to.equal('block');
-            expect(styles.marginBottom).to.equal('35px');
-          });
-
-          it('list items have correct length', () => {
-            expect(listViewItems.length).to.equal(3);
-          });
-
-          it('list first item ::before top line display property should be block', () => {
-            const firstItem = listViewItems[0].shadowRoot.querySelector('div.container');
-            const lineBeforeStyle = window.getComputedStyle(firstItem, '::before');
-
-            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('block');
-          });
-
-          it('list 2nd item ::before top line display property should be none', () => {
-            const secondItem = listViewItems[1].shadowRoot.querySelector('div.container');
-            const lineBeforeStyle = window.getComputedStyle(secondItem, '::before');
-
-            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('none');
-          });
-
-          it('list last item bottom line display property should be none', () => {
-            const container = listViewItems[0].shadowRoot.querySelector('div.container');
-            const lineAfterStyle = window.getComputedStyle(container, '::after');
-
-            expect(lineAfterStyle.getPropertyValue('display')).to.equal('none');
-          });
-
-          it('list inner item bottom line display property should be block', () => {
-            const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
-            const innerLineABottomStyle = window.getComputedStyle(container, '::after');
-
-            expect(innerLineABottomStyle.getPropertyValue('display')).to.equal('block');
-          });
-
-          it('list item background color should be correct', () => {
-            const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
-            const lineBeforeStyle = window.getComputedStyle(container, '::after');
-
-            expect(lineBeforeStyle.getPropertyValue('background-color')).to.equal('rgb(200, 199, 204)');
-          });
-
+        beforeEach(function() {
+          list = fixture('BasicIosFixture');
+          styles = getComputedStyle(list);
+        });
+        
+        it('initial styles reflecting diplay: block correctly', () => {
+          expect(list.platform).to.equal('android');
         });
 
-        context('Android list view', () => {
-          beforeEach(function () {
-            list = fixture('BasicAndroidFixture');
-            listViewItems = list.querySelectorAll('morph-list-view-item');
-          });
-
-          it('list first item ::before top line display property should be block', () => {
-            const container = listViewItems[0].shadowRoot.querySelector('div.container');
-            const lineBeforeStyle = window.getComputedStyle(container, '::before');
-
-            expect(lineBeforeStyle.getPropertyValue('display')).to.equal('block');
-          });
-
-          it('list last item bottom line display property should be none', () => {
-            const container = listViewItems[0].shadowRoot.querySelector('div.container');
-            const lineAfterStyle = window.getComputedStyle(container, '::after');
-
-            expect(lineAfterStyle.getPropertyValue('display')).to.equal('none');
-          });
-
-          it('list last item bottom margin property should be 0px', () => {
-            const listViewItemStyle = window.getComputedStyle(listViewItems[0]);
-
-            expect(listViewItemStyle.getPropertyValue('margin-bottom')).to.equal('0px');
-          });
-          
+        it('initial styles reflecting margin-bottom correctly', () => {
+          expect(styles.marginBottom).to.equal('35px');
         });
-
-        context('Expandable items test', () => {
-          // test for accordion
-          let list, listViewItems;
-          
-          beforeEach(function () {
-            list = fixture('AccordionViewFixture');
-            listViewItems = list.querySelectorAll('morph-list-view-item');
-            
-          });
-
-          it('should have accordion attribute', () => {
-            // console.log('list', list);
-            expect(list.hasAttribute('accordion')).to.equal(true);
-          });
-
-          // clicking on the item toggles the expanded
-          it('clicking on the item toggles the expanded items', () => {
-            const firstItem = listViewItems[0];
-            const secondItem = listViewItems[1];
-            const firstListViewItemShadowRoot = firstItem.shadowRoot;
-            const secondListViewItemShadowRoot = secondItem.shadowRoot;
-            const firstListItemAnchorTag = firstListViewItemShadowRoot.querySelector('a');
-            const secondListItemAnchorTag = secondListViewItemShadowRoot.querySelector('a');
-            // checking markup for expanded attributes
-            expect(firstItem.hasAttribute('expanded')).to.equal(true);
-            expect(secondItem.hasAttribute('expanded')).to.equal(false);
-            // clicking the second item
-            MockInteractions.tap(secondListItemAnchorTag);
-
-            // the second item becomes expanded and the first item not expanded
-            expect(firstItem.hasAttribute('expanded')).to.equal(false);
-            expect(secondItem.hasAttribute('expanded')).to.equal(true);
-          });
-
-
-        });
-
+       
       });
+
     </script>
 
   </body>

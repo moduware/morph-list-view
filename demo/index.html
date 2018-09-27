@@ -6,88 +6,115 @@
 
     <title>morph-list-view demo</title>
 
-    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../../morph-list-view-item/morph-list-view-item.html">
-    <link rel="import" href="../../morph-list-view-title/morph-list-view-title.html">
-    <link rel="import" href="../../morph-list-view-divider/morph-list-view-divider.html">
-    <link rel="import" href="../../iron-icons/maps-icons.html">
-    <link rel="import" href="../morph-list-view.html">
+    <script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../node_modules/@polymer/polymer/lib/utils/html-tag.js"></script>
+    <script type="module" src="../node_modules/@polymer/iron-icons/maps-icons.js"></script>
 
-    <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-        demo-snippet {
-          --demo-snippet-demo: {
-            background-color: #eff0f4;
+    <script type="module">
+      // import './@polymer/morph-list-view-title/morph-list-view-title.js';
+      // import './@polymer/morph-list-view-item/morph-list-view-item.js';
+      // import '../node_modules/@polymer/morph-list-view-divider/morph-list-view-divider.js';
+    </script>
+
+    <script type="module" src="../node_modules/@polymer/morph-list-view-item/morph-list-view-item.js"></script>
+    <script type="module" src="../node_modules/@polymer/morph-list-view-title/morph-list-view-title.js"></script>
+    <script type="module" src="../node_modules/@polymer/morph-list-view-divider/morph-list-view-divider.js"></script>
+    <script type="module" src="../morph-list-view.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+      var $_documentContainer = document.createElement('template');
+
+      $_documentContainer.innerHTML = /*html*/`<custom-style>
+        <style is="custom-style" include="demo-pages-shared-styles">
+          demo-snippet {
+            --demo-snippet-demo: {
+              background-color: #eff0f4;
+            }
           }
-        }
-      </style>
-    </custom-style>
+        </style>
+      </custom-style>`;
+
+      document.body.appendChild($_documentContainer.content);
+    </script>
   </head>
+
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic morph-list-view demo</h3>
-      <demo-snippet>
-        <template>
-          <morph-list-view>
-            <morph-list-view-title>First list</morph-list-view-title>
-            <morph-list-view-item>Item 1</morph-list-view-item>
-            <morph-list-view-item>Item 2</morph-list-view-item>
-            <morph-list-view-item>Item 3</morph-list-view-item>
+    <script type="module">
+      var $_documentContainer = document.createElement('template');
 
-            <morph-list-view-divider>Divider</morph-list-view-divider>
+      $_documentContainer.innerHTML = /*html*/`<div class="vertical-section-container centered">
+        <h3>Basic morph-list-view demo Android</h3>
+        <demo-snippet>
+          <template>
+            <morph-list-view platform="android">
+              <morph-list-view-title platform="android">Android List Title</morph-list-view-title>
+              <morph-list-view-item platform="android">Item 1</morph-list-view-item>
+              <morph-list-view-item platform="android">Item 2</morph-list-view-item>
+              <morph-list-view-item platform="android">Item 3</morph-list-view-item>
 
-            <morph-list-view-item>
-              <!-- <span slot="icon"><iron-icon icon="maps:directions-bus"></iron-icon></span> -->
-              Item 1
-              <span slot="secondary-content">Version</span> 
-            </morph-list-view-item>
-            <morph-list-view-item href="#moduware">
-              <span slot="header">Header</span>
-              Item 2
-              <span slot="footer">Footer</span>
-            </morph-list-view-item>
-          </morph-list-view>
+              <morph-list-view-divider platform="android">Divider</morph-list-view-divider>
 
-          <!-- This are expandable items inside this list view. -->
-          <morph-list-view>
-            <morph-list-view-title>Second list</morph-list-view-title>
+              <morph-list-view-item platform="android">
+                <!-- <span slot="icon"><iron-icon icon="maps:directions-bus"></iron-icon></span> -->
+                Item 1
+                <span slot="secondary-content">Version</span> 
+              </morph-list-view-item>
 
-            <morph-list-view-item expandable expanded>
-              Expandable Item 1
-              <span slot="expandable-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
-                pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
-                vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
-              </span>
-            </morph-list-view-item>
+              <morph-list-view-item platform="android" href="#moduware">
+                <span slot="header">Header</span>
+                Item 2
+                <span slot="footer">Footer</span>
+              </morph-list-view-item>
+            </morph-list-view>
 
-            <morph-list-view-item expandable>
-               Expandable Item 2
-              <span slot="expandable-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
-                pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
-                vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
-              </span>
-            </morph-list-view-item>
+            <!-- This are expandable items inside this list view. -->
+            <morph-list-view platform="ios">
+              <morph-list-view-title platform="ios">IOS Expandable List View Items</morph-list-view-title>
 
-            <morph-list-view-item expandable>
-              Expandable Item 3
-              <span slot="expandable-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
-                pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
-                vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
-              </span>
-            </morph-list-view-item>
+              <morph-list-view-item platform="ios" expandable expanded>
+                Expandable Item 1
+                <span slot="expandable-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
+                  pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
+                  vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+                </span>
+              </morph-list-view-item>
 
-            <!-- This are expandable inside list view with accordion attribute items. This will be set to behave like accordion. When one opens the others closes. -->
-            <morph-list-view accordion>
-              <morph-list-view-title>Second list Inside Accordion List View</morph-list-view-title>
+              <morph-list-view-item platform="ios" expandable>
+                Expandable Item 2
+                <span slot="expandable-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
+                  pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
+                  vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+                </span>
+              </morph-list-view-item>
+
+              <morph-list-view-item  platform="ios" expandable>
+                Expandable Item 3
+                <span slot="expandable-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
+                  pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
+                  vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+                </span>
+              </morph-list-view-item>
+            </morph-list-view>
+              <!-- This are expandable inside list view with accordion attribute items. This will be set to behave like accordion. When one opens the others closes. -->
+            <morph-list-view  platform="android" accordion>
+              <morph-list-view-title  platform="android">Android List View Item Inside Accordion List View</morph-list-view-title>
             
-              <morph-list-view-item expandable expanded>
-                Expandable Item 1 Inside Accordion
+              <morph-list-view-item platform="android" expandable expanded>
+                Expandable Item Inside Accordion Android
                 <span slot="expandable-content">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
                   pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
@@ -95,7 +122,7 @@
                 </span>
               </morph-list-view-item>
             
-              <morph-list-view-item expandable>
+              <morph-list-view-item  platform="android" expandable>
                 Expandable Item 2 Inside Accordion
                 <span slot="expandable-content">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
@@ -104,7 +131,7 @@
                 </span>
               </morph-list-view-item>
             
-              <morph-list-view-item expandable>
+              <morph-list-view-item  platform="android" expandable>
                 Expandable Item 3 Inside Accordion
                 <span slot="expandable-content">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
@@ -113,9 +140,12 @@
                 </span>
               </morph-list-view-item>
 
-          </morph-list-view>
-        </template>
-      </demo-snippet>
-    </div>
+            </morph-list-view>
+            </template>
+          </demo-snippet>
+        </div>`;
+
+      document.body.appendChild($_documentContainer.content);
+    </script>
   </body>
 </html>
