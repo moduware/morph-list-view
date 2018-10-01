@@ -14,7 +14,7 @@
   "main": "morph-list-view.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/morph-element": "github:moduware/morph-element#polymer3",
+    "morph-element": "github:moduware/morph-element#polymer3",
     "@polymer/polymer": "^3.0.0"
   },
   "devDependencies": {
