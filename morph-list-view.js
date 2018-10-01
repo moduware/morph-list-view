@@ -1,4 +1,4 @@
-import { MorphElement } from './node_modules/@polymer/morph-element/morph-element.js';
+import { MorphElement } from './node_modules/morph-element/morph-element.js';
 import { PolymerElement, html } from './node_modules/@polymer/polymer';
 import { FlattenedNodesObserver } from './node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 
