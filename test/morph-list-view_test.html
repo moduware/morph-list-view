@@ -10,13 +10,23 @@
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
     <script src="../node_modules/@polymer/iron-test-helpers/mock-interactions.js" type="module"></script>
 
-    <script type="module" src="../node_modules/@polymer/morph-list-view-item/morph-list-view-item.js"></script>
+    <script type="module" src="../node_modules/morph-list-view-item/morph-list-view-item.js"></script>
     <script type="module" src="../morph-list-view.js"></script>
     
   </head>
   <body>
 
     <test-fixture id="BasicIosFixture">
+      <template>
+        <morph-list-view platform="ios">
+          <morph-list-view-item platform="ios">Item 1</morph-list-view-item>
+          <morph-list-view-item platform="ios">Item 2</morph-list-view-item>
+          <morph-list-view-item platform="ios">Item 3</morph-list-view-item>
+        </morph-list-view>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="BasicAndroidFixture">
       <template>
         <morph-list-view platform="android">
           <morph-list-view-item platform="android">Item 1</morph-list-view-item>
@@ -26,19 +36,83 @@
       </template>
     </test-fixture>
 
+    <test-fixture id="AccordionViewFixture">
+      <template>
+        <morph-list-view platform="ios" accordion>
+          <morph-list-view-item platform="ios" expandable expanded>Item 1</morph-list-view-item>
+          <morph-list-view-item platform="ios" expandable>Item 2</morph-list-view-item>
+          <morph-list-view-item platform="ios" expandable>Item 3</morph-list-view-item>
+        </morph-list-view>
+      </template>
+    </test-fixture>
+
 
     <script type="module">
 
-      describe('morph-list-view', () => {
+      describe('morph-list-view iOS', () => {
 
         // declare variable to be used between 'beforeAll' block and 'context' block or 'it' block
-        let list, styles, ripple, rippleStyle;
+        let list, styles, listViewItems;
 
         beforeEach(function() {
           list = fixture('BasicIosFixture');
           styles = getComputedStyle(list);
+          listViewItems = list.querySelectorAll('morph-list-view-item');
         });
         
+        it('initial styles reflecting diplay: block correctly', () => {
+          expect(list.platform).to.equal('ios');
+        });
+
+        it('initial styles reflecting margin-bottom correctly', () => {
+          expect(styles.marginBottom).to.equal('35px');
+        });
+
+        it('list items have correct length', () => {
+          expect(listViewItems.length).to.equal(3);
+        });
+
+        it('list first item container ::before top line "display"property should be "block"', () => {
+          const firstItem = listViewItems[0].shadowRoot.querySelector('div.container');
+          const lineBeforeStyle = window.getComputedStyle(firstItem, '::before');
+          expect(lineBeforeStyle.getPropertyValue('display')).to.equal('block');
+        });
+
+        it('list 2nd item container ::before top line "display" property should be "none"', () => {
+          const secondItem = listViewItems[1].shadowRoot.querySelector('div.container');
+          const lineBeforeStyle = window.getComputedStyle(secondItem, '::before');
+          expect(lineBeforeStyle.getPropertyValue('display')).to.equal('none');
+        });
+
+        it('list last item container ::after bottom line "display" property should be "none"', () => {
+          const container = listViewItems[0].shadowRoot.querySelector('div.container');
+          const lineAfterStyle = window.getComputedStyle(container, '::after');
+          expect(lineAfterStyle.getPropertyValue('display')).to.equal('none');
+        });
+
+        it('list inner item sub-container bottom line "display" property should be "block"', () => {
+          const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
+          const innerLineABottomStyle = window.getComputedStyle(container, '::after');
+          expect(innerLineABottomStyle.getPropertyValue('display')).to.equal('block');
+        });
+        it('list item "background-color" should be correct', () => {
+          const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
+          const lineBeforeStyle = window.getComputedStyle(container, '::after');
+          expect(lineBeforeStyle.getPropertyValue('background-color')).to.equal('rgb(200, 199, 204)');
+        });
+       
+      });
+
+      describe('morph-list-view Android', () => {
+
+        // declare variable to be used between 'beforeAll' block and 'context' block or 'it' block
+        let list, styles, ripple, rippleStyle;
+
+        beforeEach(function () {
+          list = fixture('BasicAndroidFixture');
+          styles = getComputedStyle(list);
+        });
+
         it('initial styles reflecting diplay: block correctly', () => {
           expect(list.platform).to.equal('android');
         });
@@ -46,7 +120,24 @@
         it('initial styles reflecting margin-bottom correctly', () => {
           expect(styles.marginBottom).to.equal('35px');
         });
-       
+
+      });
+
+      describe('Expandable items test', () => {
+
+        // declare variable to be used between 'beforeAll' block and 'context' block or 'it' block
+        let list, listViewItems;
+
+        beforeEach(function () {
+          list = fixture('AccordionViewFixture');
+          listViewItems = list.querySelectorAll('morph-list-view-item');
+        });
+
+        it('should have accordion attribute', () => {
+          // console.log('list', list);
+          expect(list.hasAttribute('accordion')).to.equal(true);
+        });
+
       });
 
     </script>
