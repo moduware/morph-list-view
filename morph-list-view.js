@@ -1,6 +1,6 @@
-import { MorphElement } from './node_modules/morph-element/morph-element.js';
-import { PolymerElement, html } from './node_modules/@polymer/polymer';
-import { FlattenedNodesObserver } from './node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+import { MorphElement } from 'morph-element/morph-element.js';
+import { PolymerElement, html } from '@polymer/polymer';
+import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 
 /**
  * `morph-list-view`
