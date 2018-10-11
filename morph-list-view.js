@@ -1,4 +1,4 @@
-import { MorphElement } from 'morph-element/morph-element.js';
+import { MorphElement } from '@moduware/morph-element/morph-element.js';
 import { PolymerElement, html } from '@polymer/polymer';
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 
@@ -7,9 +7,10 @@ import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nod
  * 
  * @customElement
  * @polymer
+ * @extends HTMLElement
  * @demo demo/index.html
  */
-class MorphListView extends MorphElement(PolymerElement) {
+export class MorphListView extends MorphElement(PolymerElement) {
   static get template() {
     return html`
       <style>
