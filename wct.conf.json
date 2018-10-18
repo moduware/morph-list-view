@@ -1,10 +1,28 @@
 {
   "expanded": true,
+  "npm": true,
+  "moduleResolution": "node",
   "plugins": {
     "local": {
       "browsers": [
-        "safari",
-        "chrome"
+        "chrome",
+        "safari"
+      ]
+    },
+    "istanbub": {
+      "reporters": [
+        "text-summary",
+        "lcov",
+        "html",
+        "text"
+      ],
+      "npm": true,
+      "moduleResolution": "node",
+      "include": [
+        "/morph-list-view.js"
+      ],
+      "exclude": [
+        "**/test/**"
       ]
     }
   }

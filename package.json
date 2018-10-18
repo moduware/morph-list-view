@@ -24,6 +24,7 @@
     "@polymer/iron-test-helpers": "^3.0.0-pre.18",
     "@moduware/morph-list-view-item": "^1.0.0",
     "@moduware/morph-list-view-title": "^1.0.0",
-    "@moduware/morph-list-view-divider": "^1.0.0"
+    "@moduware/morph-list-view-divider": "^1.0.0",
+    "wct-istanbub": "^0.2.7"
   }
 }
