@@ -36,6 +36,16 @@
       </template>
     </test-fixture>
 
+    <test-fixture id="NonExpandableViewFixture">
+      <template>
+        <morph-list-view platform="ios" accordion>
+          <morph-list-view-item platform="ios">Item 1</morph-list-view-item>
+          <morph-list-view-item platform="ios">Item 2</morph-list-view-item>
+          <morph-list-view-item platform="ios">Item 3</morph-list-view-item>
+        </morph-list-view>
+      </template>
+    </test-fixture>
+
     <test-fixture id="AccordionViewFixture">
       <template>
         <morph-list-view platform="ios" accordion>
@@ -60,42 +70,58 @@
           listViewItems = list.querySelectorAll('morph-list-view-item');
         });
         
-        it('initial styles reflecting diplay: block correctly', () => {
+        it('initial styles reflecting platform as ios correctly', async () => {
+          await list.updateComplete;
+
           expect(list.platform).to.equal('ios');
         });
 
-        it('initial styles reflecting margin-bottom correctly', () => {
+        it('initial styles reflecting margin-bottom correctly', async () => {
+          await list.updateComplete;
+
           expect(styles.marginBottom).to.equal('35px');
         });
 
-        it('list items have correct length', () => {
+        it('list items have correct length', async () => {
+          await list.updateComplete;
+
           expect(listViewItems.length).to.equal(3);
         });
 
-        it('list first item container ::before top line "display"property should be "block"', () => {
+        it('list first item container ::before top line "display"property should be "block"', async () => {
+          await list.updateComplete;
+
           const firstItem = listViewItems[0].shadowRoot.querySelector('div.container');
           const lineBeforeStyle = window.getComputedStyle(firstItem, '::before');
           expect(lineBeforeStyle.getPropertyValue('display')).to.equal('block');
         });
 
-        it('list 2nd item container ::before top line "display" property should be "none"', () => {
+        it('list 2nd item container ::before top line "display" property should be "none"', async () => {
+          await list.updateComplete;
+
           const secondItem = listViewItems[1].shadowRoot.querySelector('div.container');
           const lineBeforeStyle = window.getComputedStyle(secondItem, '::before');
           expect(lineBeforeStyle.getPropertyValue('display')).to.equal('none');
         });
 
-        it('list last item container ::after bottom line "display" property should be "none"', () => {
+        it('list last item container ::after bottom line "display" property should be "none"', async () => {
+          await list.updateComplete;
+
           const container = listViewItems[0].shadowRoot.querySelector('div.container');
           const lineAfterStyle = window.getComputedStyle(container, '::after');
           expect(lineAfterStyle.getPropertyValue('display')).to.equal('none');
         });
 
-        it('list inner item sub-container bottom line "display" property should be "block"', () => {
+        it('list inner item sub-container bottom line "display" property should be "block"', async () => {
+          await list.updateComplete;
+
           const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
           const innerLineABottomStyle = window.getComputedStyle(container, '::after');
           expect(innerLineABottomStyle.getPropertyValue('display')).to.equal('block');
         });
-        it('list item "background-color" should be correct', () => {
+        it('list item "background-color" should be correct', async () => {
+          await list.updateComplete;
+
           const container = listViewItems[0].shadowRoot.querySelector('div.sub-container');
           const lineBeforeStyle = window.getComputedStyle(container, '::after');
           expect(lineBeforeStyle.getPropertyValue('background-color')).to.equal('rgb(200, 199, 204)');
@@ -113,17 +139,48 @@
           styles = getComputedStyle(list);
         });
 
-        it('initial styles reflecting diplay: block correctly', () => {
+        it('initial styles reflecting diplay: block correctly', async () => {
+          await list.updateComplete;
+
           expect(list.platform).to.equal('android');
         });
 
-        it('initial styles reflecting margin-bottom correctly', () => {
+        it('initial styles reflecting margin-bottom correctly', async () => {
+          await list.updateComplete;
+
           expect(styles.marginBottom).to.equal('35px');
         });
 
       });
 
-      describe('Expandable items test', () => {
+      //TODO: 
+      describe('Accordion View with Non-Expandable items', () => {
+        let list, listViewItems;
+
+        beforeEach(function () {
+          list = fixture('NonExpandableViewFixture');
+          listViewItems = list.querySelectorAll('morph-list-view-item');
+        });
+
+        it('should not add expanded item when click', async () => {
+          await list.updateComplete;
+
+          let firstListItem = listViewItems[0];
+          let secondListItem = listViewItems[1];
+
+          expect(firstListItem.hasAttribute('expanded')).to.be.false;
+          expect(firstListItem.hasAttribute('expandable')).to.be.false;
+
+          const shadow = firstListItem.shadowRoot;
+          const tagElement = shadow.querySelector('a');
+          tagElement.click();
+          await list.updateComplete;
+
+          expect(firstListItem.hasAttribute('expanded')).to.be.false;
+        });
+      });
+
+      describe('Accordion View with Expandable items', () => {
 
         // declare variable to be used between 'beforeAll' block and 'context' block or 'it' block
         let list, listViewItems;
@@ -133,9 +190,46 @@
           listViewItems = list.querySelectorAll('morph-list-view-item');
         });
 
-        it('should have accordion attribute', () => {
-          // console.log('list', list);
+        it('should have accordion attribute', async () => {
+          await list.updateComplete;
+          
           expect(list.hasAttribute('accordion')).to.equal(true);
+        });
+
+        it('should have first list item with attribute expanded', async () => {
+          await list.updateComplete;
+          let firstListItem = listViewItems[0];
+          expect(firstListItem.hasAttribute('expanded')).to.equal(true);
+        });
+
+        it('should toggle expanded attribute from true to false on first list item when second item is click and accordion attribute is present', async () => {
+          await list.updateComplete;
+
+          let firstListItem = listViewItems[0];
+          let secondListItem = listViewItems[1];
+          expect(firstListItem.hasAttribute('expandable')).to.be.true;
+          expect(firstListItem.hasAttribute('expanded')).to.be.true;
+          
+          secondListItem.click();
+          await list.updateComplete;
+
+          expect(firstListItem.hasAttribute('expanded')).to.be.false;
+        });
+
+        it('should toggle expanded attribute from false to true on second list item when second item is click and accordion attribute is present', async () => {
+          await list.updateComplete;
+
+          let firstListItem = listViewItems[0];
+          let secondListItem = listViewItems[1];
+          
+          expect(secondListItem.hasAttribute('expanded')).to.be.false;
+
+          const shadow = secondListItem.shadowRoot;
+          const tagElement = shadow.querySelector('a');
+          tagElement.click();
+          await list.updateComplete;
+          
+          expect(secondListItem.hasAttribute('expanded')).to.be.true;
         });
 
       });

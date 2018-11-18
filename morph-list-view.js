@@ -1,17 +1,16 @@
-import { MorphElement } from '@moduware/morph-element/morph-element.js';
-import { PolymerElement, html } from '@polymer/polymer';
+import { LitElement, html } from '@polymer/lit-element';
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+import { getPlatform } from './src/morph-element.js'
 
 /**
  * `morph-list-view`
  * 
  * @customElement
- * @polymer
  * @extends HTMLElement
  * @demo demo/index.html
  */
-export class MorphListView extends MorphElement(PolymerElement) {
-  static get template() {
+export class MorphListView extends LitElement {
+  render() {
     return html`
       <style>
         :host {
@@ -47,17 +46,21 @@ export class MorphListView extends MorphElement(PolymerElement) {
   static get is() { return 'morph-list-view'; }
   static get properties() {
     return {
+      platform: {
+        type: String,
+        reflect: true
+      },
+
       accordion: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
+    super.firstUpdated();
 
-    this._observer = new FlattenedNodesObserver(this.$.slot, (info) => {
+    this._observer = new FlattenedNodesObserver(this, (info) => {
       this._processNewNodes(info.addedNodes);
     });
 
