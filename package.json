@@ -16,14 +16,14 @@
     "@polymer/lit-element": "^0.6.2"
   },
   "devDependencies": {
+    "@moduware/morph-list-view-divider": "^1.0.0",
+    "@moduware/morph-list-view-item": "git+https://git@github.com/moduware/morph-list-view-item.git#lit",
+    "@moduware/morph-list-view-title": "^1.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
-    "wct-browser-legacy": "^1.0.1",
-    "@webcomponents/webcomponentsjs": "^2.0.0",
     "@polymer/iron-icons": "^3.0.0-pre.18",
     "@polymer/iron-test-helpers": "^3.0.0-pre.18",
-    "@moduware/morph-list-view-item": "^1.0.0",
-    "@moduware/morph-list-view-title": "^1.0.0",
-    "@moduware/morph-list-view-divider": "^1.0.0",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.1",
     "wct-istanbub": "^0.2.7"
   }
 }

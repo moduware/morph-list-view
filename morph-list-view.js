@@ -60,6 +60,10 @@ export class MorphListView extends LitElement {
   firstUpdated() {
     super.firstUpdated();
 
+    if (!this.hasAttribute('platform')) {
+      this.platform = getPlatform();
+    }
+
     this._observer = new FlattenedNodesObserver(this, (info) => {
       this._processNewNodes(info.addedNodes);
     });

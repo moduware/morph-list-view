@@ -97,12 +97,21 @@
                   vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
                 </span>
               </morph-list-view-item>
+
+              <morph-list-view-item  platform="ios" expandable>
+                Expandable Item 4
+                <span slot="expandable-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
+                  pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
+                  vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+                </span>
+              </morph-list-view-item>
             </morph-list-view>
               <!-- This are expandable inside list view with accordion attribute items. This will be set to behave like accordion. When one opens the others closes. -->
             <morph-list-view  platform="android" accordion>
               <morph-list-view-title  platform="android">Android List View Item Inside Accordion List View</morph-list-view-title>
             
-              <morph-list-view-item platform="android" expandable expanded>
+              <morph-list-view-item platform="android" expandable>
                 Expandable Item Inside Accordion Android
                 <span slot="expandable-content">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
@@ -120,7 +129,7 @@
                 </span>
               </morph-list-view-item>
             
-              <morph-list-view-item  platform="android" expandable>
+              <morph-list-view-item  platform="android" expandable expanded>
                 Expandable Item 3 Inside Accordion
                 <span slot="expandable-content">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
@@ -129,6 +138,23 @@
                 </span>
               </morph-list-view-item>
 
+              <morph-list-view-item  platform="android" expandable>
+                Expandable Item 4 Inside Accordion
+                <span slot="expandable-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
+                  pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
+                  vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+                </span>
+              </morph-list-view-item>
+
+              <morph-list-view-item  platform="android" expandable>
+                Expandable Item 5 Inside Accordion
+                <span slot="expandable-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo at turpis laoreet
+                  pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed pharetra tortor vitae est rhoncus,
+                  vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit suscipit eget ipsum.
+                </span>
+              </morph-list-view-item>
             </morph-list-view>
             </template>
           </demo-snippet>
