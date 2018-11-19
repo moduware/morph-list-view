@@ -16,6 +16,16 @@
   </head>
   <body>
 
+    <test-fixture id="NoPlatformFixture">
+      <template>
+        <morph-list-view>
+          <morph-list-view-item platform="ios">Item 1</morph-list-view-item>
+          <morph-list-view-item platform="ios">Item 2</morph-list-view-item>
+          <morph-list-view-item platform="ios">Item 3</morph-list-view-item>
+        </morph-list-view>
+      </template>
+    </test-fixture>
+
     <test-fixture id="BasicIosFixture">
       <template>
         <morph-list-view platform="ios">
@@ -58,6 +68,23 @@
 
 
     <script type="module">
+      describe('Test auto detect platform', () => {
+        let element;
+
+        beforeEach(() => {
+          element = fixture('NoPlatformFixture');
+        });
+
+        it('Should auto detect platform and assign value', (done) => {
+          // flush lets us check the actual attributes values on the markup itself and not just the property value
+          flush(function () {
+            const hasPlatform = element.hasAttribute('platform');
+
+            expect(hasPlatform).to.be.true;
+            done();
+          });
+        });
+      });
 
       describe('morph-list-view iOS', () => {
 
@@ -153,7 +180,6 @@
 
       });
 
-      //TODO: 
       describe('Accordion View with Non-Expandable items', () => {
         let list, listViewItems;
 
