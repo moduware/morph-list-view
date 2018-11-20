@@ -57,9 +57,13 @@ export class MorphListView extends LitElement {
     };
   }
 
+  /**
+   * LitElement lifecycle called once just before first updated() is called
+   */
   firstUpdated() {
     super.firstUpdated();
 
+    // check for platform if already set in HTML markup before auto detecting platform using getPlatform and assigning new value
     if (!this.hasAttribute('platform')) {
       this.platform = getPlatform();
     }
@@ -77,6 +81,11 @@ export class MorphListView extends LitElement {
     this._observer.disconnect();
   }
 
+  /**
+   * Process children of morph list view component. 
+   * check nodes of morph-list-view-item and attach click event listeners if they are expandable items
+   * @param {Object } nodes 
+   */
   _processNewNodes(nodes) {
     if (this.accordion != true) return;
     for (var i = 0; i < nodes.length; i++) {
