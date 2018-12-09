@@ -1,6 +1,6 @@
 import { LitElement, html } from '@polymer/lit-element';
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
-import { getPlatform } from './src/morph-element.js'
+import { getPlatform } from '@moduware/lit-utils';
 
 /**
  * `morph-list-view`

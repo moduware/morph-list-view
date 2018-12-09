@@ -4,6 +4,8 @@
 
 List view container component
 
+The morph components are currently being updated to use lit element as base class instead of polymer. Polymer 3.0 version will reside in the polymer-3.0 branch. Most of the morph components master branch are already using lit element plus the versions in the npm registry are also using the lit element.
+
 `morph-list-view` is the containing parent element for other list view components like `morph-list-view-item`, `morph-list-view-title`, `morph-list-view-divider`. These list item components changes its appearance based on the whether the platform or device is IOS or Android.
 
 ## Getting Started
