@@ -1,7 +1,7 @@
 {
   "description": "List view container for other list view components like morp-list-view-item and morph-list-view-title",
   "name": "@moduware/morph-list-view",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/moduware/morph-list-view"
