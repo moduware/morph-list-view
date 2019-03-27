@@ -8,18 +8,18 @@
   },
   "scripts": {
     "start": "polymer serve --npm --module-resolution=node",
-    "test": "polymer test --npm --module-resolution=node"
+    "test": "wct"
   },
   "main": "morph-list-view.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/lit-element": "^0.6.2",
+    "lit-element": "^2.0.1",
     "@moduware/lit-utils": "^1.0.0"
   },
   "devDependencies": {
-    "@moduware/morph-list-view-divider": "^1.0.0",
-    "@moduware/morph-list-view-item": "^1.1.0",
-    "@moduware/morph-list-view-title": "^1.0.0",
+    "@moduware/morph-list-view-divider": "^2.0.0",
+    "@moduware/morph-list-view-item": "^2.0.0",
+    "@moduware/morph-list-view-title": "^2.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
     "@polymer/iron-icons": "^3.0.0-pre.18",
     "@polymer/iron-test-helpers": "^3.0.0-pre.18",

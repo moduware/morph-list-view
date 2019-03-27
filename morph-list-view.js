@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { getPlatform } from '@moduware/lit-utils';
 
@@ -10,22 +10,22 @@ import { getPlatform } from '@moduware/lit-utils';
  * @demo demo/index.html
  */
 export class MorphListView extends LitElement {
-  render() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           margin-bottom: 35px;
         }
-
+      
         :host .container ::slotted(morph-list-view-item) {
           margin-bottom: 0;
         }
-
+      
         :host .container ::slotted(morph-list-view-item:not(:first-of-type)) {
           --display-top-line: none;
         }
-
+      
         :host .container ::slotted(morph-list-view-item:not(:last-of-type)) {
           --display-bottom-line: none;
           --display-inner-item-bottom-line: block;
@@ -35,8 +35,14 @@ export class MorphListView extends LitElement {
         :host .container ::slotted(morph-list-view-item[expanded]:not(:last-of-type)) {
           --sub-container-after-opacity: 0;
         }
-      </style>
+      
+      `
+    ];
+  }
 
+
+  render() {
+    return html`
       <div class="container">
         <slot id="slot"></slot>
       </div>

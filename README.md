@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/PolymerElements/paper-progress)
 
-List view container component
+A custom web component list view container made of LitElement base class.
 
 The morph components are currently being updated to use lit element as base class instead of polymer. Polymer 3.0 version will reside in the polymer-3.0 branch. Most of the morph components master branch are already using lit element plus the versions in the npm registry are also using the lit element.
 
