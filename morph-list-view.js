@@ -109,10 +109,11 @@ export class MorphListView extends LitElement {
   *  Goes through all non-target item and the expanded attribute if any. This closes open expandable item when a new one is clicked. 
   */
   _listViewItemClickHandler(e) {
-    for (var i = 0; i < this.querySelectorAll('morph-list-view-item').length; i++) {
+    var items = this.querySelectorAll('morph-list-view-item');
+    for (var i = 0; i < items.length; i++) {
       // remove expanded attribute from all other items except the one most recently clicked
-      if (this.querySelectorAll('morph-list-view-item')[i] != e.target) {
-        this.querySelectorAll('morph-list-view-item')[i].removeAttribute('expanded');
+      if (items[i] != e.currentTarget) {
+        items[i].removeAttribute('expanded');
       }
     }
   }
